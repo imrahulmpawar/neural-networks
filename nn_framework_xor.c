@@ -1,6 +1,6 @@
 #include <time.h>
 #define NN_IMPLEMENTATION
-#include "nn.h"
+#include "lib/nn.h"
 
 float td_xor[] = {
     0, 0, 0,

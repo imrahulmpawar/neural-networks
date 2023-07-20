@@ -10,6 +10,11 @@
 #define NN_MALLOC malloc
 #endif // NN_MALLOC
 
+#ifndef NN_MEMSET
+#include <string.h>
+#define NN_MEMSET memset
+#endif // NN_MEMSET
+
 #ifndef NN_ASSERT
 #include <assert.h>
 #define NN_ASSERT assert
@@ -257,11 +262,11 @@ void nn_print(NN nn)
     char buffer[15];
     for(size_t i = 0; i < nn.count; i++)
     {
-        memset(buffer, 0x0, sizeof(buffer));
+        NN_MEMSET(buffer, 0x0, sizeof(buffer));
         sprintf(buffer, "nn.ws[%zu]", i);
         mat_print_ex(nn.ws[i], buffer, 4);
 
-        memset(buffer, 0x0, sizeof(buffer));
+        NN_MEMSET(buffer, 0x0, sizeof(buffer));
         sprintf(buffer, "nn.bs[%zu]", i);
         mat_print_ex(nn.bs[i], buffer, 4);
     } 
